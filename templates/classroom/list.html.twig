@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <table>
+       <tr><th>Id</th><th>Name</th></tr>
+       <tr {% for classroom in list %}>
+           <td>{{ classroom.id }}</td>
+           <td>{{ classroom.name }}</td>
+       </tr {% endfor %}>
+   </table>
+</body>
+</html>
