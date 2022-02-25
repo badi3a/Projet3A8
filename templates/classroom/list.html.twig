@@ -9,6 +9,10 @@
 <body>
 <div class="container">
     <h1>Classroom List</h1>
+    <button class="btn btn-sm btn-warning">
+        add a new Classroom
+    </button>
+    <br> <br>
     <table class="table table-info">
         <thead>
         <tr><th>Id</th><th>Name</th><th>Teacher</th><th>Description</th><th>action</th></tr>
@@ -19,7 +23,11 @@
             <td>{{ classroom.name }}</td>
             <td>{{ classroom.teacher}}</td>
             <td>{{ classroom.description}}</td>
-            <td><button class="btn btn-sm btn-outline-danger">delete</button></td>
+            <td>
+                <a href="{{ path("deleteClassroomPage",{'id':classroom.id }) }}">
+                    <button class="btn btn-sm btn-outline-danger">delete</button>
+                </a>
+            </td>
         </tr {% endfor %}>
         </tbody>
     </table>

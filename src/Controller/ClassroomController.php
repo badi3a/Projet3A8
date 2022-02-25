@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Classroom;
+use App\Form\ClassroomType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -56,6 +57,22 @@ class ClassroomController extends AbstractController
         $em->remove($object);
         $em->flush();
         return $this->redirectToRoute("listClassroom");
+    }
+
+    //add Classroom method
+    /**
+     * @Route("/new",name="newClassroomPage")
+     */
+    public function newClassroom():Response{
+        //1.Create form view
+        //1.a prepare an instance of the classroom
+        $classroom= new Classroom();
+        //1.b prepare the form
+        $form= $this->createForm(ClassroomType::class, $classroom);
+        //1.c render the form
+        return $this->render('classroom/new.html.twig',[
+            'f'=>$form->createView()
+        ]);
     }
 
 
