@@ -68,7 +68,7 @@ class ClassroomController extends AbstractController
     public function newClassroom(Request $request):Response{
         //1.Create form view
         //1.a prepare an instance of the classroom
-        $classroom= new Classroom();
+       $classroom= new Classroom();
         //1.b prepare the form
         $form= $this->createForm(ClassroomType::class, $classroom);
         //2. Handel http request sent by the user
