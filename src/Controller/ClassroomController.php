@@ -88,4 +88,34 @@ class ClassroomController extends AbstractController
     }
 
 
+    //update Classroom method
+    /**
+     * @Route("/update/{id}",name="updateClassroomPage")
+     */
+    public function updateClassroom($id,Request $request):Response{
+
+        //1.Create form view
+        //1.a prepare an instance of the classroom
+        $classroom= $this->getDoctrine()
+            ->getRepository(Classroom::class)
+            ->find($id);
+        //1.b prepare the form
+        $form= $this->createForm(ClassroomType::class, $classroom);
+        //2. Handel http request sent by the user
+        $form=$form->handleRequest($request);
+        //2.b check the form
+        if($form->isSubmitted() && $form->isValid()){
+            //3.update data
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute("listClassroom");
+        }
+        //1.c render the form
+        return $this->render('classroom/new.html.twig',[
+            'f'=>$form->createView()
+        ]);
+    }
+
+
+
 }

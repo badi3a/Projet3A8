@@ -28,6 +28,10 @@
                 <a href="{{ path("deleteClassroomPage",{'id':classroom.id }) }}">
                     <button class="btn btn-sm btn-outline-danger">delete</button>
                 </a>
+                &nbsp;
+                <a href="{{ path("updateClassroomPage",{'id':classroom.id }) }}">
+                    <button class="btn btn-sm btn-outline-primary">Update</button>
+                </a>
             </td>
         </tr {% endfor %}>
         </tbody>
