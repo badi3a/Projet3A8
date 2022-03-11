@@ -13,6 +13,15 @@
     <a href="{{ path("newClassroomPage") }}" class="btn btn-sm btn-warning">
         add a new Classroom
     </a>
+    <form method="post" action="{{ path("searchClassroom") }}">
+        <div class="form-group">
+            <label>Search by Teacher Name</label>
+            <input type="text" name="teacherName" class="form-control">
+        </div>
+        <br>
+        <input type="submit" name="search" value="search" class="btn btn-info">
+    </form>
+
     <br> <br>
     <table class="table table-info">
         <thead>

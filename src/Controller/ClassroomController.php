@@ -34,8 +34,9 @@ class ClassroomController extends AbstractController
 
         //get the data from the DB
         $data= $this->getDoctrine()
-            ->getManager()->getRepository(Classroom::class)
-            ->findAll();
+            ->getManager()
+            ->getRepository(Classroom::class)
+            ->myFindAll();
         //test the render of the database
         //var_dump($data);
         //die();
@@ -116,6 +117,19 @@ class ClassroomController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/serach", name="searchClassroom")
+     */
+   public function searchClassroomByTeacher(Request $request){
+        $name=$request->get("teacherName");
 
+        $list=$this->getDoctrine()
+            ->getRepository(Classroom::class)
+            ->findByNameTeacher($name);
+       return $this->render('classroom/list.html.twig',array(
+           //data
+           'list'=>$list
+       ));
+   }
 
 }

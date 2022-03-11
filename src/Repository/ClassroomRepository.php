@@ -47,4 +47,19 @@ class ClassroomRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function myFindAll(){
+        //sql: select * from Classroom
+        $query=$this->getEntityManager()
+            ->createQuery('SELECT c FROM App\Entity\Classroom c');
+        return $query->getResult();
+    }
+
+    public function findByNameTeacher($name){
+        $query=$this->getEntityManager()
+            ->createQuery('SELECT c FROM App\Entity\Classroom WHERE
+             c.teacher Like :name')
+        ->setParameter('name','%'.$name.'%');
+        return $query->getResult();
+    }
 }
